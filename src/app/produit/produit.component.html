@@ -1,0 +1,9 @@
+<form class="container">
+  pu: <input type="number" name="pu" [(ngModel)]="pu" #pus="ngModel" required><br><br>
+  <span class="alert alert-danger" *ngIf="pu < 0">Le prix unitaire doit être positive</span>
+  Qte: <input type="number" name="qte" [(ngModel)]="qte" #qtes="ngModel" required><br><br>
+  <span class="alert alert-danger" *ngIf="qte < 0">La quantite doit être positive</span>
+  <button class="btn btn-primary" (click)="submit()">Calculer</button>
+  <span appToUpper [fontSize]="fontSize"  class="alert alert-info"  *ngIf="ht>0">ht:{{ht | currency:'MAD'}}, tva:{{tva | currency:'MAD'}}, ttc:{{ttc | currency:'MAD'}}</span>
+  <span class="alert alert-danger" *ngIf="pu==0 && qte==0 && pus.valid && qtes.valid && pus.dirty && qtes.dirty">Le prix unitaire et la quantite doit pas être 0</span>
+</form>
